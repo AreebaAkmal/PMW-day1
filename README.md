@@ -71,7 +71,7 @@ Download or clone this repository and open **index.html** in your web browser.
 
 If GitHub Pages is enabled, visit:
 
-**https://github.com/AreebaAkmal/PMW-day1/tree/main**
+**https://github.com/AreebaAkmal/PMW-day1.git**
 
 ---
 
