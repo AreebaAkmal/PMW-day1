@@ -246,3 +246,4 @@ These goals are tracked on the portfolio site and will guide upcoming projects i
 Thank you for visiting my repository! More AI and cybersecurity projects will be added as I continue learning and building.
 Updated after completing the PMW Day 1 assignment.
 Areeba Akmal
+Minor update created for my first pull request.
