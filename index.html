@@ -3,153 +3,936 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My AI Portfolio</title>
+<meta name="description" content="Areeba Akmal — Aspiring AI & Machine Learning Developer portfolio">
+<title>Areeba Akmal | AI Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root {
+    --bg-dark: #1a0a3e;
+    --bg-card: rgba(255, 255, 255, 0.06);
+    --bg-card-hover: rgba(255, 255, 255, 0.1);
+    --purple-900: #2E1065;
+    --purple-800: #4C1D95;
+    --purple-700: #6D28D9;
+    --purple-500: #8B5CF6;
+    --purple-300: #C4B5FD;
+    --purple-100: #EDE9FE;
+    --text-primary: #F8F5FF;
+    --text-muted: #C4B5FD;
+    --text-dark: #1E1B4B;
+    --accent: #A78BFA;
+    --gradient: linear-gradient(135deg, #6D28D9 0%, #4C1D95 50%, #2E1065 100%);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.2);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --nav-height: 72px;
+    --transition: 0.25s ease;
 }
 
-body{
-    font-family:Arial, sans-serif;
-    background:#2E1065; /* Dark Purple */
-    color:#F8F5FF;
-    line-height:1.6;
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-header{
-    background:#4C1D95; /* Rich Purple */
-    color:white;
-    text-align:center;
-    padding:40px 20px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--nav-height) + 20px);
 }
 
-header h1{
-    font-size:2.5rem;
-    margin-bottom:10px;
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--bg-dark);
+    background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(109, 40, 217, 0.35), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(76, 29, 149, 0.25), transparent);
+    color: var(--text-primary);
+    line-height: 1.7;
+    min-height: 100vh;
 }
 
-header p{
-    color:#E9D5FF;
-    font-size:1.1rem;
+h1, h2, h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.25;
 }
 
-section{
-    width:80%;
-    margin:25px auto;
-    background:#E9D5FF; /* Light Purple */
-    color:#2E1065;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 6px 15px rgba(0,0,0,0.25);
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color var(--transition);
 }
 
-h2{
-    color:#6D28D9;
-    margin-bottom:15px;
+a:hover {
+    color: var(--purple-300);
 }
 
-ul{
-    padding-left:20px;
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--nav-height);
+    background: rgba(26, 10, 62, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(167, 139, 250, 0.15);
 }
 
-li{
-    margin-bottom:8px;
+.nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-a{
-    color:#5B21B6;
-    font-weight:bold;
-    text-decoration:none;
+.nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
 }
 
-a:hover{
-    text-decoration:underline;
+.nav-logo span {
+    color: var(--accent);
 }
 
-footer{
-    background:#4C1D95;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:30px;
+.nav-links {
+    display: flex;
+    gap: 8px;
+    list-style: none;
 }
 
-@media(max-width:768px){
-    section{
-        width:92%;
+.nav-links a {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition), color var(--transition);
+}
+
+.nav-links a:hover {
+    background: rgba(167, 139, 250, 0.12);
+    color: var(--text-primary);
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: transform var(--transition), opacity var(--transition);
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Hero */
+.hero {
+    padding: calc(var(--nav-height) + 60px) 24px 80px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: rgba(167, 139, 250, 0.15);
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    color: var(--purple-300);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+}
+
+.hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #fff 0%, var(--purple-300) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--text-muted);
+    max-width: 560px;
+    margin: 0 auto 32px;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: var(--gradient);
+    color: white;
+    box-shadow: 0 4px 20px rgba(109, 40, 217, 0.4);
+}
+
+.btn-primary:hover {
+    color: white;
+    box-shadow: 0 6px 28px rgba(109, 40, 217, 0.55);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--purple-300);
+    border: 1px solid rgba(167, 139, 250, 0.4);
+}
+
+.btn-outline:hover {
+    background: rgba(167, 139, 250, 0.1);
+    color: var(--text-primary);
+}
+
+/* Main layout */
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+}
+
+.section {
+    margin-bottom: 48px;
+}
+
+.section-header {
+    margin-bottom: 28px;
+}
+
+.section-header h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.section-header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Cards */
+.card {
+    background: var(--bg-card);
+    border: 1px solid rgba(167, 139, 250, 0.12);
+    border-radius: var(--radius);
+    padding: 28px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: border-color var(--transition), background var(--transition), transform var(--transition);
+}
+
+.card:hover {
+    border-color: rgba(167, 139, 250, 0.25);
+    background: var(--bg-card-hover);
+}
+
+.card p {
+    color: var(--text-muted);
+}
+
+/* Tags */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+}
+
+.tag {
+    background: rgba(109, 40, 217, 0.25);
+    border: 1px solid rgba(167, 139, 250, 0.2);
+    color: var(--purple-300);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: background var(--transition), transform var(--transition);
+}
+
+.tag:hover {
+    background: rgba(109, 40, 217, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Skills grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    list-style: none;
+}
+
+.skill-item {
+    background: rgba(109, 40, 217, 0.2);
+    border: 1px solid rgba(167, 139, 250, 0.15);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--purple-100);
+    transition: background var(--transition), transform var(--transition);
+}
+
+.skill-item:hover {
+    background: rgba(109, 40, 217, 0.35);
+    transform: translateY(-2px);
+}
+
+/* Projects */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.project-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--gradient);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+}
+
+.project-card h3 {
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    flex: 1;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.project-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: rgba(167, 139, 250, 0.15);
+    color: var(--purple-300);
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: auto;
+}
+
+.project-link:hover {
+    gap: 10px;
+}
+
+.project-card.coming-soon {
+    border-style: dashed;
+    opacity: 0.75;
+}
+
+.project-card.coming-soon .project-icon {
+    background: rgba(167, 139, 250, 0.2);
+}
+
+/* Learning Goals */
+.goals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.goal-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.goal-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 4px 0 0 4px;
+}
+
+.goal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.goal-card h3 {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+}
+
+.goal-status {
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 50px;
+}
+
+.status-active {
+    background: rgba(34, 197, 94, 0.15);
+    color: #86EFAC;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.status-planned {
+    background: rgba(251, 191, 36, 0.15);
+    color: #FDE68A;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.goal-card p {
+    font-size: 0.88rem;
+    margin-bottom: 16px;
+}
+
+.progress-bar {
+    height: 6px;
+    background: rgba(167, 139, 250, 0.15);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 50px;
+    transition: width 0.6s ease;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+/* Contact */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px;
+}
+
+.contact-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(109, 40, 217, 0.3);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.contact-item h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+.contact-item a,
+.contact-item span {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    word-break: break-all;
+}
+
+.contact-item a:hover {
+    color: var(--accent);
+}
+
+/* Footer */
+footer {
+    background: rgba(46, 16, 101, 0.6);
+    border-top: 1px solid rgba(167, 139, 250, 0.1);
+    text-align: center;
+    padding: 28px 24px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
     }
 
-    header h1{
-        font-size:2rem;
+    .nav-links {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: rgba(26, 10, 62, 0.97);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        flex-direction: column;
+        padding: 16px 24px 24px;
+        gap: 4px;
+        border-bottom: 1px solid rgba(167, 139, 250, 0.15);
+        transform: translateY(-120%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform var(--transition), opacity var(--transition), visibility var(--transition);
+    }
+
+    .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links a {
+        padding: 12px 16px;
+        font-size: 1rem;
+    }
+
+    .hero {
+        padding-top: calc(var(--nav-height) + 40px);
+        padding-bottom: 48px;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .goals-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-inner {
+        padding: 0 16px;
+    }
+
+    main {
+        padding: 0 16px 48px;
+    }
+
+    .hero {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn {
+        justify-content: center;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .skill-item {
+        padding: 12px 8px;
+        font-size: 0.82rem;
+    }
+
+    .section {
+        margin-bottom: 36px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 </style>
-
 </head>
 <body>
 
-<header>
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">Areeba<span>.</span></a>
+        <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#interests">Interests</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#goals">Goals</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header class="hero">
+    <span class="hero-badge">PMW AI Track · Week 1</span>
     <h1>Areeba Akmal</h1>
-    <p>Aspiring AI & Machine Learning Developer</p>
+    <p>Aspiring AI &amp; Machine Learning Developer with a foundation in Cybersecurity. Building practical projects and exploring how intelligent systems solve real-world problems.</p>
+    <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="https://github.com/AreebaAkmal" target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub Profile</a>
+    </div>
 </header>
 
-<section>
-    <h2>About Me</h2>
-    <p>
-        Hello! I'm passionate about Artificial Intelligence and Machine Learning.
-        I enjoy learning new technologies and building projects that solve real-world problems.
-    </p>
-</section>
+<main>
 
-<section>
-    <h2>AI Interests</h2>
-    <ul>
-        <li>Machine Learning</li>
-        <li>Deep Learning</li>
-        <li>Computer Vision</li>
-        <li>Natural Language Processing</li>
-        <li>Data Science</li>
-    </ul>
-</section>
+    <section id="about" class="section">
+        <div class="section-header">
+            <h2>About Me</h2>
+            <p>Who I am and what drives me</p>
+        </div>
+        <div class="card">
+            <p>
+                Hello! I'm a Cybersecurity student with a growing passion for Artificial Intelligence and Machine Learning.
+                I enjoy learning new technologies, building hands-on projects, and continuously improving my technical skills.
+                My goal is to bridge security knowledge with AI to create smarter, safer systems.
+            </p>
+        </div>
+    </section>
 
-<section>
-    <h2>Skills</h2>
-    <ul>
-        <li>Python</li>
-        <li>HTML</li>
-        <li>Git & GitHub</li>
-        <li>Problem Solving</li>
-        <li>Artificial Intelligence (Learning)</li>
-    </ul>
-</section>
+    <section id="interests" class="section">
+        <div class="section-header">
+            <h2>AI Interests</h2>
+            <p>Areas of AI I'm most excited to explore</p>
+        </div>
+        <ul class="tag-list">
+            <li class="tag">Machine Learning</li>
+            <li class="tag">Deep Learning</li>
+            <li class="tag">Computer Vision</li>
+            <li class="tag">Natural Language Processing</li>
+            <li class="tag">Data Science</li>
+            <li class="tag">Cloud Computing</li>
+        </ul>
+    </section>
 
-<section>
-    <h2>Projects</h2>
-    <ul>
-        <li>PMW Day 1 Portfolio Website</li>
-        <li>More AI projects coming soon...</li>
-    </ul>
-</section>
+    <section id="skills" class="section">
+        <div class="section-header">
+            <h2>Skills</h2>
+            <p>Technologies and tools I'm working with</p>
+        </div>
+        <ul class="skills-grid">
+            <li class="skill-item">Python</li>
+            <li class="skill-item">HTML &amp; CSS</li>
+            <li class="skill-item">Git &amp; GitHub</li>
+            <li class="skill-item">Cybersecurity</li>
+            <li class="skill-item">Problem Solving</li>
+            <li class="skill-item">AI / ML</li>
+        </ul>
+    </section>
 
-<section>
-    <h2>Contact</h2>
-    <p>
-        GitHub:
-        <a href="https://github.com/AreebaAkmal" target="_blank">
-            https://github.com/AreebaAkmal
-        </a>
-    </p>
+    <section id="projects" class="section">
+        <div class="section-header">
+            <h2>Projects</h2>
+            <p>Things I've built and am building</p>
+        </div>
+        <div class="projects-grid">
 
-    <p>Email: areebaakmal3699@gmail.com</p>
-</section>
+            <article class="card project-card">
+                <div class="project-icon">🌐</div>
+                <h3>PMW Day 1 Portfolio Website</h3>
+                <p>A responsive personal portfolio built with HTML and CSS for the PMW AI Track. Showcases my background, skills, projects, and learning goals with a modern purple-themed design.</p>
+                <div class="project-tags">
+                    <span class="project-tag">HTML</span>
+                    <span class="project-tag">CSS</span>
+                    <span class="project-tag">Responsive</span>
+                </div>
+                <a href="https://github.com/AreebaAkmal/PMW-day1" target="_blank" rel="noopener noreferrer" class="project-link">
+                    View on GitHub →
+                </a>
+            </article>
+
+            <article class="card project-card coming-soon">
+                <div class="project-icon">🤖</div>
+                <h3>ML Classification Project</h3>
+                <p>A machine learning project using Python to classify data and evaluate model performance. Currently in planning — will include data preprocessing, training, and visualization.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">Scikit-learn</span>
+                    <span class="project-tag">Planned</span>
+                </div>
+                <span class="project-link" style="color: var(--text-muted); cursor: default;">Coming Soon</span>
+            </article>
+
+            <article class="card project-card coming-soon">
+                <div class="project-icon">🔒</div>
+                <h3>AI &amp; Cybersecurity Integration</h3>
+                <p>Exploring how AI can enhance threat detection and security analysis. A future project combining my cybersecurity background with machine learning techniques.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Security</span>
+                    <span class="project-tag">AI</span>
+                    <span class="project-tag">Planned</span>
+                </div>
+                <span class="project-link" style="color: var(--text-muted); cursor: default;">Coming Soon</span>
+            </article>
+
+        </div>
+    </section>
+
+    <section id="goals" class="section">
+        <div class="section-header">
+            <h2>Learning Goals</h2>
+            <p>What I'm focused on mastering next</p>
+        </div>
+        <div class="goals-grid">
+
+            <article class="card goal-card">
+                <div class="goal-header">
+                    <h3>Machine Learning Fundamentals</h3>
+                    <span class="goal-status status-active">In Progress</span>
+                </div>
+                <p>Learn core ML concepts including supervised/unsupervised learning, model evaluation, and working with real datasets using Python libraries.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 35%;"></div>
+                </div>
+                <div class="progress-label">
+                    <span>Started</span>
+                    <span>35%</span>
+                </div>
+            </article>
+
+            <article class="card goal-card">
+                <div class="goal-header">
+                    <h3>Deep Learning &amp; Neural Networks</h3>
+                    <span class="goal-status status-active">In Progress</span>
+                </div>
+                <p>Understand neural network architectures, backpropagation, and frameworks like TensorFlow or PyTorch to build more advanced AI models.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 15%;"></div>
+                </div>
+                <div class="progress-label">
+                    <span>Exploring</span>
+                    <span>15%</span>
+                </div>
+            </article>
+
+            <article class="card goal-card">
+                <div class="goal-header">
+                    <h3>Cloud Computing (AWS / Azure)</h3>
+                    <span class="goal-status status-planned">Planned</span>
+                </div>
+                <p>Deploy ML models to the cloud, understand cloud infrastructure, and learn how to scale AI applications in production environments.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 5%;"></div>
+                </div>
+                <div class="progress-label">
+                    <span>Not started</span>
+                    <span>5%</span>
+                </div>
+            </article>
+
+            <article class="card goal-card">
+                <div class="goal-header">
+                    <h3>Natural Language Processing</h3>
+                    <span class="goal-status status-planned">Planned</span>
+                </div>
+                <p>Build text-based AI applications — sentiment analysis, chatbots, and language models — to understand how machines process human language.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 10%;"></div>
+                </div>
+                <div class="progress-label">
+                    <span>Researching</span>
+                    <span>10%</span>
+                </div>
+            </article>
+
+            <article class="card goal-card">
+                <div class="goal-header">
+                    <h3>Open Source Contributions</h3>
+                    <span class="goal-status status-active">In Progress</span>
+                </div>
+                <p>Contribute to AI and developer communities on GitHub — share projects, collaborate, and learn from others in the field.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 25%;"></div>
+                </div>
+                <div class="progress-label">
+                    <span>Active</span>
+                    <span>25%</span>
+                </div>
+            </article>
+
+            <article class="card goal-card">
+                <div class="goal-header">
+                    <h3>Computer Vision</h3>
+                    <span class="goal-status status-planned">Planned</span>
+                </div>
+                <p>Learn image classification, object detection, and video analysis using convolutional neural networks and modern CV tools.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 5%;"></div>
+                </div>
+                <div class="progress-label">
+                    <span>Not started</span>
+                    <span>5%</span>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="section-header">
+            <h2>Contact</h2>
+            <p>Let's connect</p>
+        </div>
+        <div class="contact-grid">
+            <div class="card contact-item">
+                <div class="contact-icon">🔗</div>
+                <div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/AreebaAkmal" target="_blank" rel="noopener noreferrer">github.com/AreebaAkmal</a>
+                </div>
+            </div>
+            <div class="card contact-item">
+                <div class="contact-icon">✉️</div>
+                <div>
+                    <h3>Email</h3>
+                    <a href="mailto:areebaakmal3699@gmail.com">areebaakmal3699@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
 
 <footer>
-    <p>© 2026 Areeba Akmal | AI Portfolio</p>
+    <p>&copy; 2026 Areeba Akmal &nbsp;·&nbsp; AI Portfolio</p>
 </footer>
+
+<script>
+(function () {
+    var toggle = document.querySelector('.nav-toggle');
+    var navLinks = document.querySelector('.nav-links');
+
+    toggle.addEventListener('click', function () {
+        var isOpen = navLinks.classList.toggle('open');
+        toggle.classList.toggle('active', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            navLinks.classList.remove('open');
+            toggle.classList.remove('active');
+            toggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+})();
+</script>
 
 </body>
 </html>
