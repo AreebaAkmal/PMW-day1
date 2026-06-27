@@ -1,0 +1,29 @@
+PMW AI Track - 3D Reconstruction Experiment
+=============================================
+
+Defined 3D Points (x, y, z):
+---------------------------------------------
+  Point A: (1.0, 2.0, 3.0)
+  Point B: (4.0, 5.0, 6.0)
+  Point C: (2.0, 1.0, 4.0)
+  Point D: (7.0, 3.0, 2.0)
+
+Distance Calculation:
+---------------------------------------------
+  From Point A (1.0, 2.0, 3.0)
+  To   Point B (4.0, 5.0, 6.0)
+  Euclidean distance: 5.20 units
+
+  From Point C (2.0, 1.0, 4.0)
+  To   Point D (7.0, 3.0, 2.0)
+  Euclidean distance: 5.74 units
+
+How This Relates to 3D Reconstruction:
+---------------------------------------------
+  - 3D reconstruction builds models from 3D points like these.
+  - Tools such as COLMAP and Open3D work with large point clouds.
+  - Distance helps measure size, depth, and accuracy in a 3D scene.
+  - Structure from Motion (SfM) estimates point positions from images.
+  - This experiment shows the basic math behind those advanced systems.
+
+Experiment complete.

@@ -1,0 +1,25 @@
+import math
+
+print("PMW AI Track - 3D Reconstruction Experiment")
+print("-------------------------------------------")
+
+points = [
+    (1, 2, 3),
+    (4, 5, 6),
+    (2, 1, 4)
+]
+
+print("\n3D Points:")
+
+for point in points:
+    print(point)
+
+distance = math.sqrt(
+    (points[0][0]-points[1][0])**2 +
+    (points[0][1]-points[1][1])**2 +
+    (points[0][2]-points[1][2])**2
+)
+
+print(f"\nDistance between first two points: {distance:.2f}")
+
+print("\nThis experiment demonstrates basic handling of 3D coordinate data used in computer vision and 3D reconstruction.")

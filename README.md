@@ -113,18 +113,78 @@ To publish the portfolio online:
 
 ---
 
+## 3D Reconstruction Experiment
+
+As part of the PMW AI Track, I completed a **3D Reconstruction** research and coding assignment. This module introduced how computers build 3D models from images and the foundational math behind spatial data.
+
+### Research Completed
+
+Research notes in `3d-reconstruction/notes.md` cover:
+
+- What 3D reconstruction is and why it matters
+- Practical applications in computer vision, robotics, cultural heritage, AR/VR, and autonomous vehicles
+- Key techniques: **Structure from Motion (SfM)**, **Multi-View Stereo (MVS)**, and **Photogrammetry**
+- Popular tools: **COLMAP**, **Meshroom**, **OpenMVG**, and **Open3D**
+
+### Python Experiment
+
+`3d-reconstruction/experiment.py` is a beginner-friendly Python script that:
+
+- Defines four sample 3D coordinate points `(x, y, z)`
+- Prints each point with a label
+- Calculates the **Euclidean distance** between two pairs of points
+- Explains how 3D points and distance relate to real reconstruction pipelines
+
+**Run the experiment:**
+
+```bash
+cd 3d-reconstruction
+python experiment.py
+```
+
+Expected output is saved in `3d-reconstruction/output/result.txt`.
+
+### Files in `3d-reconstruction/`
+
+| File / Folder | Purpose |
+|---------------|---------|
+| `notes.md` | Research notes on 3D reconstruction concepts and tools |
+| `experiment.py` | Python experiment with 3D points and distance calculation |
+| `output/result.txt` | Expected output from running `experiment.py` |
+| `screenshots/` | Folder for submission screenshots (see `screenshots/README.md`) |
+
+### Learning Outcomes
+
+Through this assignment, I learned that:
+
+1. 3D reconstruction converts 2D images into 3D models using geometry and computer vision.
+2. SfM, MVS, and photogrammetry work together in typical reconstruction workflows.
+3. 3D points and distance calculations are foundational — even simple Python code reflects concepts used in tools like COLMAP and Open3D.
+4. This field connects directly to robotics, AR/VR, autonomous systems, and cultural heritage preservation.
+5. Documenting research and running small experiments is an effective way to build understanding before using advanced ML pipelines.
+
+---
+
 ## Folder Structure
 
 ```
 PMW-day1/
-├── index.html      # Portfolio website (HTML, CSS, and JavaScript in one file)
-└── README.md       # Project documentation
+├── index.html                  # Portfolio website (HTML, CSS, and JavaScript)
+├── README.md                   # Project documentation
+└── 3d-reconstruction/          # PMW 3D Reconstruction assignment
+    ├── notes.md                # Research notes
+    ├── experiment.py           # Python 3D points experiment
+    ├── output/
+    │   └── result.txt          # Expected experiment output
+    └── screenshots/
+        └── README.md           # Screenshot submission guide
 ```
 
 | File | Purpose |
 |------|---------|
 | `index.html` | Complete portfolio — structure, styling, and mobile nav script |
 | `README.md` | Setup guide, feature list, AI development notes, and learning goals |
+| `3d-reconstruction/` | Research notes, Python experiment, output, and screenshot folder |
 
 ---
 
@@ -171,6 +231,8 @@ These goals are tracked on the portfolio site and will guide upcoming projects i
 - [x] Responsive design implemented
 - [x] Portfolio enhanced with AI assistance (Cursor)
 - [x] README documented
+- [x] 3D Reconstruction research notes completed
+- [x] 3D Reconstruction Python experiment completed
 
 ---
 
